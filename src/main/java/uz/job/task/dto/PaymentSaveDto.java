@@ -10,7 +10,9 @@ public class PaymentSaveDto {
 
     private Long id;
     private ZonedDateTime time;
+    @JsonProperty
     private String status;
+    @JsonProperty
     private double amount;
     @NotBlank
     @JsonProperty

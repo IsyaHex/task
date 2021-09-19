@@ -27,8 +27,4 @@ public class ProductController {
                 .orElse(null);
     }
 
-    @PostMapping
-    public void addProduct() {
-
-    }
 }

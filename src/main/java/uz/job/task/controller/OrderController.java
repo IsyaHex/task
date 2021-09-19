@@ -7,6 +7,7 @@ import uz.job.task.dto.OrderSaveDto;
 import uz.job.task.entity.Invoice;
 import uz.job.task.entity.Order;
 import uz.job.task.service.CustomerService;
+import uz.job.task.service.InvoiceService;
 import uz.job.task.service.OrderService;
 import uz.job.task.service.ProductService;
 
@@ -20,16 +21,16 @@ public class OrderController {
     private final OrderService orderService;
     private final CustomerService customerService;
     private final ProductService productService;
-    private final InvoiceController invoiceController;
+    private final InvoiceService invoiceService;
 
     private static final String invoiceDetailsUrl = "localhost:1111/invoice";
     private static final String baseUrl = "localhost:1111/order";
 
-    public OrderController(OrderService orderService, CustomerService customerService, ProductService productService, InvoiceController invoiceController) {
+    public OrderController(OrderService orderService, CustomerService customerService, ProductService productService, InvoiceService invoiceService) {
         this.orderService = orderService;
         this.customerService = customerService;
         this.productService = productService;
-        this.invoiceController = invoiceController;
+        this.invoiceService = invoiceService;
     }
 
     @GetMapping
@@ -54,14 +55,7 @@ public class OrderController {
     @PostMapping("/add/{id}")
     public Invoice addOrder(@Valid @NonNull @RequestBody OrderSaveDto order, @PathVariable("id") Long id) {
         orderService.insertOrder(order);
-        return invoiceController.getByInvoiceId(id);
+        return invoiceService.selectInvoiceById(id)
+                .orElse(null);
     }
-
-//    @PostMapping
-//    public String addOrder(@RequestBody @NonNull OrderSaveDto order, @PathVariable("id") Long id) {
-//        orderService.insertOrder(order);
-//        orderService.selectOrderById(id);
-//        return "redirect:" + invoiceDetails + "/{id}";
-//    }
-
 }

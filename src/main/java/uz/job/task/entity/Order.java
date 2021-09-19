@@ -13,6 +13,9 @@ public class Order {
     @SequenceGenerator(name = "order_seq", sequenceName = "seq_order", allocationSize = 1)
     private Long id;
 
+    @Column(name = "product_name")
+    private String productName;
+
     @Column(name = "date")
     private ZonedDateTime date;
 
@@ -26,6 +29,14 @@ public class Order {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
     }
 
     public ZonedDateTime getDate() {

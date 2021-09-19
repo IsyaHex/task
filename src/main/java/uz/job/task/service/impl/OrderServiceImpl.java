@@ -1,5 +1,6 @@
 package uz.job.task.service.impl;
 
+import javassist.NotFoundException;
 import liquibase.pro.packaged.O;
 import org.springframework.stereotype.Service;
 import uz.job.task.constant.Status;
@@ -16,6 +17,7 @@ import javax.transaction.Transactional;
 import java.time.LocalDate;
 import java.time.ZonedDateTime;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 import java.util.Random;
 
@@ -46,11 +48,20 @@ public class OrderServiceImpl implements OrderService {
     @Transactional
     @Override
     public Order insertOrder(OrderSaveDto model) {
-//        Order order = orderRepository.findById(model.getProduct().getId())
-//                .orElseThrow(() -> new IllegalArgumentException("Выбран несуществующий продукт"));
         Order order = new Order();
         addOrder(model, order);
         return orderRepository.save(order);
+    }
+
+    private void changeStatus(Order order) {
+        Invoice invoice = invoiceRepository.findById(order.getId())
+                        .orElse(null);
+        if (invoice != null) {
+            invoice.setStatus(Status.FAILED.name());
+        }
+        else {
+            throw new NoSuchElementException();
+        }
     }
 
     private void addOrder(OrderSaveDto model, Order order) {
@@ -60,6 +71,7 @@ public class OrderServiceImpl implements OrderService {
         detail.setOrder(order);
         detail.setProduct(model.getProduct());
         detail.setQuantity(model.getQuantity());
+        order.setProductName(detail.getProduct().getName());
         detailRepository.save(detail);
         Invoice invoice = new Invoice();
         invoice.setOrder(order);

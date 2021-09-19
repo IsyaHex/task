@@ -1,0 +1,29 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <include file="liquibase/changelog/category/CreateTable.xml"/>
+    <include file="liquibase/changelog/category/Sequence/CreateSequence.xml"/>
+
+    <include file="liquibase/changelog/customer/CreateTable.xml"/>
+    <include file="liquibase/changelog/customer/Sequence/CreateSequence.xml"/>
+
+    <include file="liquibase/changelog/product/CreateTable.xml"/>
+    <include file="liquibase/changelog/product/Sequence/CreateSequence.xml"/>
+
+    <include file="liquibase/changelog/order/CreateTable.xml"/>
+    <include file="liquibase/changelog/order/Sequence/CreateSequence.xml"/>
+
+    <include file="liquibase/changelog/detail/CreateTable.xml"/>
+    <include file="liquibase/changelog/detail/Sequence/CreateSequence.xml"/>
+
+    <include file="liquibase/changelog/invoice/CreateTable.xml"/>
+    <include file="liquibase/changelog/invoice/Sequence/CreateSequence.xml"/>
+
+    <include file="liquibase/changelog/payment/CreateTable.xml"/>
+    <include file="liquibase/changelog/payment/Sequence/CreateSequence.xml"/>
+
+
+</databaseChangeLog>

@@ -1,0 +1,23 @@
+server:
+  port: 1111
+
+spring:
+  application:
+    name: task
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+  datasource:
+#    url: jdbc:postgresql://localhost:5432/task
+    url: jdbc:postgresql://localhost:5432/test
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+    hikari:
+      minimum-idle: 5
+      maximum-pool-size: 20
+      pool-name: HikariPool
+  liquibase:
+    change-log: classpath:liquibase/liquibase-changelog.xml
+    enabled: true

@@ -24,6 +24,10 @@ public class Customer {
     @Column(name = "phone")
     private String phone;
 
+//    @OneToOne(cascade = CascadeType.ALL)
+//    @JoinColumn(name = "order_id", referencedColumnName = "id")
+//    private Order order;
+
     public Integer getId() {
         return id;
     }
@@ -63,6 +67,14 @@ public class Customer {
     public void setPhone(String phone) {
         this.phone = phone;
     }
+
+//    public Order getOrder() {
+//        return order;
+//    }
+//
+//    public void setOrder(Order order) {
+//        this.order = order;
+//    }
 
     @Override
     public boolean equals(Object o) {

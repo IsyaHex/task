@@ -17,14 +17,11 @@
                 <constraints primaryKey="true" primaryKeyName="pk_order_id"/>
             </column>
             <column name="product_name" type="varchar2(30)"/>
-            <column name="date" type="timestamp">
+            <column name="date" type="date">
                 <constraints nullable="false"/>
             </column>
-            <column name="cust_id" type="number">
-                <constraints foreignKeyName="fk_customer_id" referencedTableName="customer"
-                             referencedColumnNames="id"/>
-            </column>
-
+            <column name="customer_id" type="number"/>
+            <column name="details_id" type="number"/>
         </createTable>
 
         <setTableRemarks tableName="orders" remarks="Список заказов"/>

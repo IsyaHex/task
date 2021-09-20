@@ -29,6 +29,9 @@ public class Invoice {
     @Column(name = "due")
     private ZonedDateTime due;
 
+    @Column(name = "reimbursed")
+    private double reimbursed;
+
     public Long getId() {
         return id;
     }
@@ -75,6 +78,14 @@ public class Invoice {
 
     public void setDue(ZonedDateTime due) {
         this.due = due;
+    }
+
+    public double getReimbursed() {
+        return reimbursed;
+    }
+
+    public void setReimbursed(double reimbursed) {
+        this.reimbursed = reimbursed;
     }
 
     @Override

@@ -8,4 +8,7 @@ import java.util.Optional;
 public interface PaymentService {
     Optional<Payment> selectPaymentById(Long id);
     Payment insertPayment(PaymentSaveDto model);
+
+    // Criteria 6
+    Payment overpaid_invoices(Long id);
 }

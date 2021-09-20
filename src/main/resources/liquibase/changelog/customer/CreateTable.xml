@@ -24,6 +24,10 @@
             </column>
             <column name="address" type="varchar2(255)"/>
             <column name="phone" type="varchar2(255)"/>
+            <column name="order_id" type="number">
+                <constraints foreignKeyName="fk_customer_order_id" referencedTableName="orders"
+                             referencedColumnNames="id"/>
+            </column>
         </createTable>
 
         <setTableRemarks tableName="customer" remarks="Список покупателей"/>

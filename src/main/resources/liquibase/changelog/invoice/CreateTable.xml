@@ -24,6 +24,8 @@
             <column name="amount" type="numeric(8,2)"/>
             <column name="issued" type="timestamp"/>
             <column name="due" type="timestamp"/>
+            <column name="reimbursed" type="number"/>
+
         </createTable>
 
         <setTableRemarks tableName="invoice" remarks="Список счетов на оплату"/>

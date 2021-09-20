@@ -18,11 +18,6 @@ public class OrderSaveDto {
     @JsonProperty
     private Integer quantity;
 
-//    public OrderSaveDto(Customer customer, Product product, Integer quantity) {
-//        this.customer = customer;
-//        this.product = product;
-//        this.quantity = quantity;
-//    }
 
     public Long getId() {
         return id;

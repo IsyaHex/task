@@ -12,10 +12,6 @@ public class Detail {
     @SequenceGenerator(name = "detail_seq", sequenceName = "seq_detail", allocationSize = 1)
     private Long id;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "ord_id", referencedColumnName = "id")
-    private Order order;
-
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "pr_id", referencedColumnName = "id")
     private Product product;
@@ -23,20 +19,15 @@ public class Detail {
     @Column(name = "quantity")
     private Integer quantity;
 
+    @Column(name = "inv_id")
+    private Long invoice;
+
     public Long getId() {
         return id;
     }
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public Order getOrder() {
-        return order;
-    }
-
-    public void setOrder(Order order) {
-        this.order = order;
     }
 
     public Product getProduct() {
@@ -53,6 +44,14 @@ public class Detail {
 
     public void setQuantity(Integer quantity) {
         this.quantity = quantity;
+    }
+
+    public Long getInvoice() {
+        return invoice;
+    }
+
+    public void setInvoice(Long invoice) {
+        this.invoice = invoice;
     }
 
     @Override

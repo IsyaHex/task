@@ -10,6 +10,6 @@ import java.util.List;
 @Repository
 public interface InvoiceRepository extends JpaRepository<Invoice, Long> {
 
-    @EntityGraph(attributePaths = {"order"})
-    List<Invoice> findAll();
+//    @EntityGraph(attributePaths = {"order"})
+//    List<Invoice> findAll();
 }

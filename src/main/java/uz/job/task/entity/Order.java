@@ -20,8 +20,12 @@ public class Order {
     private ZonedDateTime date;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "cust_id", referencedColumnName = "id")
+    @JoinColumn(name = "customer_id", referencedColumnName = "id")
     private Customer customer;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "details_id", referencedColumnName = "id")
+    private Detail detail;
 
     public Long getId() {
         return id;
@@ -47,6 +51,14 @@ public class Order {
         this.date = date;
     }
 
+    public Detail getDetail() {
+        return detail;
+    }
+
+    public void setDetail(Detail detail) {
+        this.detail = detail;
+    }
+
     public Customer getCustomer() {
         return customer;
     }
@@ -54,6 +66,8 @@ public class Order {
     public void setCustomer(Customer customer) {
         this.customer = customer;
     }
+
+
 
     @Override
     public boolean equals(Object o) {
